@@ -1,0 +1,80 @@
+.nav-pills .nav-link{
+  color:white;
+  border-radius: 10px !important;
+   
+}
+.nav-pills .nav-link.active{
+  background-color:unset !important;
+  border: 1.5px solid white;
+}
+
+.nav-link:focus, .nav-link:hover {
+  color: white !important;
+}
+
+.formH1{
+  color:#eeeaea;
+  margin:auto;
+  text-align: center;
+  padding-bottom: 4%;
+  border-bottom: 1px solid white;
+  font-family: Georgia, serif;;
+}
+
+.formInput{
+  font-size: 15px;
+  font-family: Arial, san-serif;
+  color:#89c3e0;
+}
+
+.form-check-label{
+  font-size: 15px;
+  font-family: Arial, san-serif;
+  color:#89c3e0;
+}
+
+.MuiTab-root{
+  text-transform: none !important;
+  color: white !important;
+}
+
+.Mui-selected{
+  font-weight: bold !important;
+}
+
+.eventInfoText{
+  color: #73f1de;
+  font-weight:600;
+  margin-bottom: 0.1rem;
+}
+
+.eventInfoTextFields{
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.eventImg{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23000%27%3e%3cpath d=%27M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z%27/%3e%3c/svg%3e") !important;
+ }
+ 
+ .carousel-control-next-icon {
+   background-image: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23000%27%3e%3cpath d=%27M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e") !important;
+ }
+
+ .content-css{
+  color: white;
+  font-weight: 500;
+  text-align:center;
+  margin: auto;
+ }
+
+ .show-more-less-clickable{
+  display: block;
+  color:#81c3e5;
+ }
