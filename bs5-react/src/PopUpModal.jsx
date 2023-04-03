@@ -11,9 +11,9 @@ function PopUpModal(props) {
   return (
     <>
       <Button onClick={handleModal} className="col-sm-4" style={{backgroundColor:"#df2f2f", border:"none", margin:"auto"}}>Show venue on Google map</Button>
-      <Modal show={showModal} onHide={handleModal}>
+      <Modal show={showModal} onHide={handleModal} backdrop="static">
         <Modal.Header>
-          <Modal.Title><b>Event Venue</b></Modal.Title>
+          <Modal.Title style={{fontWeight:"600"}}>Event Venue</Modal.Title>
         </Modal.Header>
         <Modal.Body style={{height:"450px"}}>
             <MapContainer lat = {props.lat} long = {props.long}></MapContainer>

@@ -1,6 +1,7 @@
 {
   "name": "bs5-react",
   "version": "0.1.0",
+  "homepage": "https://assignment8webtech.uw.r.appspot.com/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",

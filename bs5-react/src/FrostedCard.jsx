@@ -125,7 +125,7 @@ const FrostedCard = () => {
         <Form onSubmit={handleSubmit}>
             <h1 className='formH1 mt-4' style={{fontSize:"40px"}}>Events Search</h1>
             <Form.Group className="mt-3">
-                <Form.Label className='formInput'>Keyword<span style={{color:'red'}}>*</span></Form.Label>
+                <Form.Label className='formInput'>Keyword&nbsp;<span style={{color:'red'}}>*</span></Form.Label>
                 <Autocomplete
                     loadingText={loading && <CircularProgress size={20} />}
                     noOptionsText="No matching results found"
@@ -149,7 +149,7 @@ const FrostedCard = () => {
                     <Form.Control type="number" placeholder="10" value={distance} onChange={(e)=>{setDistance(e.target.value)}}/>
                 </Form.Group>
                 <Form.Group className="mt-3 col-10 col-sm-5" controlId="category">
-                    <Form.Label className='formInput'>Category<span style={{color:'red'}}>*</span></Form.Label>
+                    <Form.Label className='formInput'>Category&nbsp;<span style={{color:'red'}}>*</span></Form.Label>
                     <Form.Select value={category} onChange={(e)=>{setCategory(e.target.value)}}>
                     <option value="Default">Default</option>
                     <option value="Music">Music</option>
@@ -161,7 +161,7 @@ const FrostedCard = () => {
                 </Form.Group>
             </div>
             <Form.Group className="mt-3" controlId="location">
-                <Form.Label className='formInput'>Location<span style={{color:'red'}}>*</span></Form.Label>
+                <Form.Label className='formInput'>Location&nbsp;<span style={{color:'red'}}>*</span></Form.Label>
                 <Form.Control type="text" required disabled={checkbox} value={location} onChange={(e)=>{setLocation(e.target.value);}}/>
             </Form.Group>
             <Form.Group className="mt-3" controlId="checkbox">

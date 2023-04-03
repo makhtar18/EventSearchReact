@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./Navbar";
 import Favorites from './pages/Favorites';
 import Search from './pages/Search';
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
 
 function App() {
   const favoriteTableString = localStorage.getItem('favoriteTable');
@@ -22,7 +22,7 @@ function App() {
         </header>
         <div className="container">
           <Routes>
-            <Route path="/" element={<Search />} />
+            <Route path="/" element={<Navigate to="/search" />} />
             <Route path="/search" element={<Search />} />
             <Route path="/favorites" element={<Favorites />} />
           </Routes>

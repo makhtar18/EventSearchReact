@@ -23,7 +23,7 @@ const Favorite = (props)=>{
         }
         var favoriteTableStr = JSON.stringify(favoriteTable);
         localStorage.setItem('favoriteTable',favoriteTableStr);
-        alert("Event added to favorites!");
+        alert("Event Added to Favorites!");
     };
 
     const handleDislike = () => {
@@ -31,7 +31,7 @@ const Favorite = (props)=>{
         delete favoriteTable[props.eventId];
         var favoriteTableStr = JSON.stringify(favoriteTable);
         localStorage.setItem('favoriteTable',favoriteTableStr);
-        alert("Event removed from favorites!");
+        alert("Event Removed from Favorites!");
     };
     return (
         <div style={{margin:"20px auto 15px auto", cursor:"pointer", display:"inline-block"}}>

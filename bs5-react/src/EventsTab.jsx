@@ -47,7 +47,7 @@ const EventsTab = ({eventsResponse})=>{
         </div>
         
         <div style={{margin:"1rem auto auto auto", color:"white", textAlign:"center"}}>
-            Share on: 
+            Share on:&nbsp;
             <a href={`https://twitter.com/intent/tweet?text=Check ${eventsResponse.eventName} on Ticketmaster.%0D%0A&url=${eventsResponse.buyTicketAt}`} target="_blank" style={{textDecoration:"none"}}><FaTwitter className="me-2" color="rgb(38 146 188)" style={{cursor:"pointer", width:"35px", height:"35px"}}/></a>
             <a href={`https://www.facebook.com/sharer/sharer.php?u=${eventsResponse.buyTicketAt}`} target="_blank" style={{textDecoration:"none"}}> <FaFacebookSquare className="me-2" color="#2453cb" style={{cursor:"pointer", width:"35px", height:"35px"}}/></a>  
         </div>

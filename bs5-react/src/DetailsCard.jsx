@@ -15,14 +15,6 @@ import EventsTab from "./EventsTab";
 import ArtistsTab from "./ArtistsTab";
 import VenueTab from "./VenueTab";
 
-var SpotifyWebApi = require('spotify-web-api-node');
-
-// credentials are optional
-var spotifyApi = new SpotifyWebApi({
-  clientId: 'bfd2e4e08b8745a29aa8803da2c2f95b',
-  clientSecret: '109c6d664d50470db269a0cab628e83b'
-});
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -65,11 +57,9 @@ function a11yProps(index) {
 const DetailsCard = (props)=>{
     const [value, setValue] = useState(0);
     const [eventsResponse, setEventsResponse] = useState({});
-    const [accessToken, setAccessToken] = useState('');
     const [spotifyResponse, setSpotifyResponse] = useState([]);
     const [spotifyAlbumnResponse, setSpotifyAlbumnResponse] = useState({});
     const [venueResponse, setVenueResponse] = useState([]);
-    spotifyApi.setAccessToken(accessToken);
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
@@ -80,41 +70,25 @@ const DetailsCard = (props)=>{
         const response = await axios.get(`https://assignment8webtech.uw.r.appspot.com/getSpotifyAuthToken`);
         return response.data;
       }
-      const getEventData = async () => {
+      async function getSpotifyResponse(mRA) {
+        const response = await axios.get(`https://assignment8webtech.uw.r.appspot.com/spotifyResults?musicRelatedArtists=${mRA}`);
+        return response.data;
+      }
+      async function getEventData() {
         const response = await axios.get(`https://assignment8webtech.uw.r.appspot.com/eventsInfo?eventId=${props.eventId}`);
         const eventData = await response.data;
         //console.log("EventData called", eventData);
         setEventsResponse(eventData);
-        var musicRelatedArtists = [];
-        for (let artist of eventData.musicRelatedArtists) {
-          spotifyApi.searchArtists(artist)
-          .then(function(data) {
-            console.log("Spotify status code: " + data.statusCode);
-            musicRelatedArtists.push(data.body.artists.items[0]);
-            var artistId = data.body.artists.items[0].id;
-            spotifyApi.getArtistAlbums(artistId, { limit: 3 })
-            .then(function(albumData) {
-              spotifyAlbumnResponse[artistId] = albumData.body.items;
-              //console.log('Artist albums', albumData.body.items);
-            }, function(err) {
-              getAccessToken().then((res) => {
-                setAccessToken(res);
-                spotifyApi.setAccessToken(accessToken);
-              });
-              console.log(err);
-            });
-          }, function(err) {
-            console.log("Spotify Api Error:", err);
-            getAccessToken().then((res) => {
-              setAccessToken(res);
-              spotifyApi.setAccessToken(accessToken);
-            });
-          });
+        var spotifyRes = await getSpotifyResponse(eventData.musicRelatedArtists);
+        if(spotifyRes.musicRelatedArtists.length<1){
+          await getAccessToken();
+          spotifyRes = await getSpotifyResponse(eventData.musicRelatedArtists);
         }
-        setSpotifyResponse(musicRelatedArtists);
+        setSpotifyResponse(spotifyRes.musicRelatedArtists);
+        setSpotifyAlbumnResponse(spotifyRes.spotifyAlbumnResponse);
       };
       getEventData();
-    }, [props.eventId, accessToken]);
+    }, [props.eventId]);
 
     useEffect(() => {
 
@@ -131,7 +105,7 @@ const DetailsCard = (props)=>{
       };
 
       getVenueData();
-    }, [props.venue, props.eventId]);
+    }, [props.venue]);
 
     return (
     <Card className='detailsCard col-sm-8 py-3' style={{
